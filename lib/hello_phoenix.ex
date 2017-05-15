@@ -12,6 +12,8 @@ defmodule HelloPhoenix do
       supervisor(HelloPhoenix.Repo, []),
       # Start the endpoint when the application starts
       supervisor(HelloPhoenix.Endpoint, []),
+      worker(HelloPhoenix.State, []),
+      worker(HelloPhoenix.Ticker, [])
       # Start your own worker by calling: HelloPhoenix.Worker.start_link(arg1, arg2, arg3)
       # worker(HelloPhoenix.Worker, [arg1, arg2, arg3]),
     ]
@@ -28,4 +30,7 @@ defmodule HelloPhoenix do
     HelloPhoenix.Endpoint.config_change(changed, removed)
     :ok
   end
+
+
+
 end
