@@ -11,7 +11,7 @@ config :hello_phoenix, HelloPhoenix.Endpoint,
   url: [host: "https://elixirjan.herokuapp.com"],
   debug_errors: true,
   code_reloader: true,
-  check_origin: ["https://elixirjan.herokuapp.com","//localhost:4000"],
+  check_origin: ["https://elixirjan.herokuapp.com:4000","//localhost:4000"],
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../", __DIR__)]]
 
