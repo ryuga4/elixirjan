@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdbd6db6-2a19-4a0d-8c35-7807fcfe2c90" name="Default" comment="" />
+    <list default="true" id="bdbd6db6-2a19-4a0d-8c35-7807fcfe2c90" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/dev.exs" afterPath="$PROJECT_DIR$/config/dev.exs" />
+    </list>
     <ignored path="$PROJECT_DIR$/_build/dev/lib/hellophoenix/ebin/" />
     <ignored path="$PROJECT_DIR$/_build/test/lib/hellophoenix/ebin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,8 +64,8 @@
       <file leaf-file-name="dev.exs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/dev.exs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="260">
+              <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -872,7 +874,7 @@
       <workItem from="1494837938762" duration="120000" />
       <workItem from="1494842200357" duration="14184000" />
       <workItem from="1494862347177" duration="1745000" />
-      <workItem from="1494864376043" duration="3660000" />
+      <workItem from="1494864376043" duration="4065000" />
     </task>
     <task id="LOCAL-00001" summary="Jakieś testy">
       <created>1494798280499</created>
@@ -892,7 +894,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24409000" />
+    <option name="totallyTimeSpent" value="24814000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1231" height="1052" extended-state="0" />
@@ -1260,8 +1262,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/dev.exs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="260">
+          <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
           <folding />
         </state>
       </provider>
