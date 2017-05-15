@@ -1,6 +1,6 @@
 defmodule HelloPhoenix.RoomChannel do
   use Phoenix.Channel
-
+  require Logger
 
   def join("room:lobby", message, socket) do
     Logger.info "Joined"
