@@ -3,6 +3,8 @@ defmodule HelloPhoenix.RoomChannel do
 
 
   def join("room:lobby", message, socket) do
+    Logger.info "Joined"
+    Logger.debug "Message: #{message}\n Socket: #{socket}"
     send(self(),{:after_join, message})
     {:ok, socket}
   end
