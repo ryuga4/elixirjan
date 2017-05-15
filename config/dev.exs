@@ -8,10 +8,10 @@ use Mix.Config
 # with brunch.io to recompile .js and .css sources.
 config :hello_phoenix, HelloPhoenix.Endpoint,
   http: [port: 4000],
-  url: [host: "theproperhost"],
+  url: [host: "https://elixirjan.herokuapp.com"],
   debug_errors: true,
   code_reloader: true,
-  check_origin: false,
+  check_origin: ["https://elixirjan.herokuapp.com","//localhost:4000"],
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../", __DIR__)]]
 
