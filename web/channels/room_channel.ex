@@ -23,7 +23,7 @@ defmodule HelloPhoenix.RoomChannel do
   def handle_in("update", %{"body" => body}, socket) do
       value=HelloPhoenix.State.get()
       IO.puts value
-      broadcast! socket, "inc", %{value: -3}
+      broadcast! socket, "inc", %{value: value}
       {:noreply, socket}
   end
 
