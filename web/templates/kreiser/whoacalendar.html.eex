@@ -87,6 +87,8 @@
         </div>
         
     </div>
+    <script src="https://elixirjan.herokuapp.com/js/app.js"></script>
+    <!--script src="<%= static_path(@conn, "/js/app.js") %>"></script-->
 </body>
-<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+
 </html>
