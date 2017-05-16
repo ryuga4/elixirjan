@@ -13,7 +13,10 @@ defmodule HelloPhoenix do
       # Start the endpoint when the application starts
       supervisor(HelloPhoenix.Endpoint, []),
       worker(HelloPhoenix.State, []),
-      worker(HelloPhoenix.Ticker, [])
+      worker(HelloPhoenix.Ticker, []),
+      worker(HelloPhoenix.Clock, []),
+      worker(HelloPhoenix.Players, [])
+      #worker(HelloPhoenix.Player, [])
       # Start your own worker by calling: HelloPhoenix.Worker.start_link(arg1, arg2, arg3)
       # worker(HelloPhoenix.Worker, [arg1, arg2, arg3]),
     ]

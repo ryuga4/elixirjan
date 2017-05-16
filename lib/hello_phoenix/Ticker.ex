@@ -17,7 +17,8 @@ defmodule HelloPhoenix.Ticker do
   end
 
   defp schedule_work() do
-    Process.send_after(self(), :work, 1000) # In 2 hours
+    Process.send_after(self(), :work, 1000)
+    #HelloPhoenix.Players.turn_left(%{"name" => "default"})
     HelloPhoenix.State.inc()
   end
 end

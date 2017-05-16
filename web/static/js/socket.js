@@ -54,22 +54,70 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
+
 let channel = socket.channel("room:lobby", {})
 let chatInput         = document.querySelector("#chat-input")
 let messagesContainer = document.querySelector("#messages")
 let valueItem = document.querySelector("#value")
+let player_button =document.querySelector("#player")
+let player_value= document.querySelector("#player_con")
+player_button.addEventListener("click", event => {
+    channel.push("player", {"name": "default"})
+
+})
+channel.on("player", payload => {
+    player_value.innerText=JSON.stringify(payload.value)
+})
+
+channel.on("update", payload => {
+    player_value.innerText=JSON.stringify(payload.value)
+
+})
 
 chatInput.addEventListener("keypress", event => {
     if(event.keyCode === 13){
-
     console.log("SIEMANOO")
     channel.push("update", {body: -100})
     channel.push("new_msg", {body: chatInput.value})
     chatInput.value = ""
-
 }
 })
 
+var keys = {};
+
+$(document).keydown(function (e) {
+    keys[e.which] = true;
+
+    for(var i in keys) checkKey(i)
+});
+
+$(document).keyup(function (e) {
+    delete keys[e.which];
+    //$('#helper').html("false")
+    for(var i in keys) checkKey(i)
+});
+
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e == '38') {
+        channel.push("forward", {"name": "default"})
+    }
+    else if (e == '40') {
+        // down arrow
+    }
+    else if (e == '37') {
+        channel.push("turn_left", {"name": "default"})
+    }
+    else if (e == '39') {
+        channel.push("turn_right", {"name": "default"})
+    }
+
+}
+
+setInterval(()=>{channel.push("update", {body: chatInput.value})},10)
 
 
 channel.on("new_msg", payload => {

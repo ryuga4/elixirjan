@@ -23,16 +23,46 @@ defmodule HelloPhoenix.RoomChannel do
   end
 
   def handle_in("update", %{"body" => body}, socket) do
-      value=HelloPhoenix.State.get()
-      IO.puts value
-      broadcast! socket, "inc", %{value: value}
+      number=HelloPhoenix.State.get()
+      value=HelloPhoenix.Players.get()
+      #HelloPhoenix.Players.update()
+
+      #IO.puts value
+      broadcast! socket, "inc", %{value: number}
+      broadcast! socket, "update", %{value: value}
       {:noreply, socket}
   end
 
-  def handle_out("update", payload, socket) do
-      push socket, "update", payload
+#  def handle_out("update", payload, socket) do
+#      push socket, "update", payload
+#      {:noreply, socket}
+#  end
+
+
+  def handle_in("player", %{"name" => name}, socket) do
+      HelloPhoenix.Players.forward(%{"name" => name})
+      value = HelloPhoenix.Players.get()
+      broadcast! socket, "update", %{value: value}
       {:noreply, socket}
   end
+
+
+
+  def handle_in("turn_left", %{"name" => name}, socket) do
+     HelloPhoenix.Players.turn_left(%{"name" => name})
+     {:noreply, socket}
+  end
+  def handle_in("turn_right", %{"name" => name}, socket) do
+     HelloPhoenix.Players.turn_right(%{"name" => name})
+     {:noreply, socket}
+  end
+  def handle_in("forward", %{"name" => name}, socket) do
+     HelloPhoenix.Players.forward(%{"name" => name})
+     {:noreply, socket}
+  end
+
+
+
 
   def handle_info({:after_join, _message}, socket) do
 

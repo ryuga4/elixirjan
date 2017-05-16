@@ -1,3 +1,11 @@
+
 <div id="value">123123123</div>
 <div id="messages"></div>
 <input id="chat-input" type="text"> </input>
+<div id="player">PLAYER</div>
+<div id="player_con">000</div>
+
+<br/>
+<br/>
+
+<div id="helper"></div>
