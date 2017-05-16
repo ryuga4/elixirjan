@@ -51,6 +51,7 @@ exports.config = {
 
   // Configure your plugins
   plugins: {
+    npm: ['jquery'],
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
