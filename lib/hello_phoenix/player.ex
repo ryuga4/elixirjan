@@ -33,8 +33,8 @@ defmodule HelloPhoenix.Player do
 
   def chech_max (%HelloPhoenix.Player{velocity: [a,b]}=player) do
     case :math.sqrt(a*a+b*b) do
-      length when length<=@maxspeed -> player
-      length when length>@maxspeed  -> %{player | velocity: [10*a/length,10*b/length]}
+      length when length <= @maxspeed -> player
+      length when length >  @maxspeed  -> %{player | velocity: [10*a/length,10*b/length]}
     end
   end
 

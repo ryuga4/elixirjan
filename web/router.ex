@@ -15,7 +15,7 @@ defmodule HelloPhoenix.Router do
 
   scope "/", HelloPhoenix do
     pipe_through :browser # Use the default browser stack
-
+    get "/kreiser", KreiserController, :index
     get "/", PageController, :index
     get "/hello", HelloController, :index
     get "/hello/add/:value", HelloController, :add
