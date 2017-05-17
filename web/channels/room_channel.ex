@@ -22,7 +22,6 @@ defmodule HelloPhoenix.RoomChannel do
 
 
   def handle_in("update", %{"body" => body}, socket) do
-      number=HelloPhoenix.State.get()
       value=HelloPhoenix.Players.get()
       #HelloPhoenix.Players.update()
 
@@ -63,11 +62,6 @@ defmodule HelloPhoenix.RoomChannel do
 
 
   def handle_info({:after_join, _message}, socket) do
-
-    #HelloPhoenix.State.start_link()
-    #HelloPhoenix.State.inc()
-    value=HelloPhoenix.State.get()
-    broadcast! socket, "inc", %{value: value}
     {:noreply, socket}
   end
 end

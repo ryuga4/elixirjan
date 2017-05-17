@@ -1,4 +1,7 @@
 defmodule HelloPhoenix.Clock do
+  @span 17
+
+
   use GenServer
 
   def start_link do
@@ -18,6 +21,6 @@ defmodule HelloPhoenix.Clock do
   end
 
   defp schedule_work() do
-    Process.send_after(self(), :work,10) # In 2 hours
+    Process.send_after(self(), :work,@span) # In 2 hours
   end
 end

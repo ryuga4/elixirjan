@@ -12,8 +12,6 @@ defmodule HelloPhoenix do
       supervisor(HelloPhoenix.Repo, []),
       # Start the endpoint when the application starts
       supervisor(HelloPhoenix.Endpoint, []),
-      worker(HelloPhoenix.State, []),
-      worker(HelloPhoenix.Ticker, []),
       worker(HelloPhoenix.Clock, []),
       worker(HelloPhoenix.Players, [])
       #worker(HelloPhoenix.Player, [])
