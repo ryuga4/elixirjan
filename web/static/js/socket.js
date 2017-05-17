@@ -130,7 +130,7 @@ function update() {
     if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": "default"});
 };
 
-setInterval(()=>{channel.push("update", {body: 0})},10)
+setInterval(()=>{channel.push("update", {body: 0})},1)
 setInterval(()=>{update()},10)
 
 
