@@ -14,7 +14,8 @@ defmodule HelloPhoenix.Player do
              angle: 0,
              turning: :none,
              move: :none,
-             inc: 0
+             inc: 0,
+             help: 0
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
     x = case a+a2 do
        sth when sth > 1000 -> 1000
@@ -36,7 +37,9 @@ defmodule HelloPhoenix.Player do
   def set_move(%HelloPhoenix.Player{}=player, move) do
       %{player | move: move}
   end
-
+  def set_help(%HelloPhoenix.Player{}=player,set) do
+      %{player | help: set}
+  end
 
   def resistance(%HelloPhoenix.Player{velocity: [a,b],inc: inc}=player) do
     x= case a*@resistance do

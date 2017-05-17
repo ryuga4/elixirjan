@@ -6,6 +6,7 @@ defmodule HelloPhoenix.Clock do
 
   def start_link do
     GenServer.start_link(__MODULE__, %{})
+    Agent.start_link(fn -> %{val: 0} end,name: __MODULE__)
   end
 
   def init(state) do
@@ -13,9 +14,14 @@ defmodule HelloPhoenix.Clock do
     {:ok, state}
   end
 
+  def get() do
+    Agent.get(__MODULE__,&(&1))
+  end
+
   def handle_info(:work, state) do
     #IO.binwrite("| ")
     time=measure(fn -> HelloPhoenix.Players.update() end)
+    Agent.update(__MODULE__,&(%{&1| val: time*1000}))
     #IO.puts time
     schedule_work(@span-round(time*1000)) # Reschedule once more
     {:noreply, state}

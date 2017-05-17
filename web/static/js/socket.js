@@ -141,7 +141,10 @@ function update() {
 setInterval(()=>{channel.push("update", {body: 0})},10)
 setInterval(()=>{update()},1)
 
-
+var helper = {
+    inc: 0,
+    n: 0
+}
 
 
 
@@ -151,7 +154,10 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("update", payload => {
-    console.log(payload.value[0].inc)
+    helper.n+=1
+    helper.inc+=payload.time.val
+    console.log(payload.value[0].inc+" "+helper.inc/helper.n)
+
     //licznik+=1
     render()
     for (var i in payload.value) {
