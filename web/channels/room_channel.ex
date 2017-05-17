@@ -2,9 +2,8 @@ defmodule HelloPhoenix.RoomChannel do
   use Phoenix.Channel
   require Logger
 
-  def join("room:lobby", message, socket) do
-    Logger.info "Joined"
-    Logger.debug "Message: coś"
+  def join("room:" <> user, message, socket) do
+    IO.puts user<>" connected"
     send(self(),{:after_join, message})
     {:ok, socket}
   end
