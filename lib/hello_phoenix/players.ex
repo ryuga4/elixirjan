@@ -2,11 +2,11 @@ defmodule HelloPhoenix.Players do
   alias HelloPhoenix.Player, as: Player
 
   def start_link() do
-    Agent.start_link(fn -> [%HelloPhoenix.Player{}] end,name: __MODULE__)
+    Agent.start_link(fn -> [] end,name: __MODULE__)
   end
 
   def new_player(player) do
-    Agent.update(__MODULE__,[player|get()] )
+    Agent.update(__MODULE__,&([player|&1]))
   end
 
 
@@ -44,7 +44,7 @@ defmodule HelloPhoenix.Players do
   def action(name,func) do
     Agent.update(__MODULE__, fn i -> i
         |> Enum.map(&(case &1.name do
-            name -> &1 |> func.()
+            name2 when name2==name -> &1 |> func.()
             _    -> &1
         end  ))
     end)

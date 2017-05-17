@@ -54,8 +54,8 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-var id = new Date();
-let channel = socket.channel("room:"+JSON.stringify(id), {})
+var id = JSON.stringify(new Date());
+let channel = socket.channel("room:"+id, {})
 
 var licznik =0
 
@@ -124,10 +124,10 @@ var Key = {
 window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
 window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
 function update() {
-    if (Key.isDown(Key.UP)) channel.push("forward", {"name": "default"});
-    if (Key.isDown(Key.LEFT)) channel.push("turn_left", {"name": "default"});
-    if (Key.isDown(Key.DOWN)) channel.push("stop", {"name": "default"});
-    if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": "default"});
+    if (Key.isDown(Key.UP)) channel.push("forward", {"name": id});
+    if (Key.isDown(Key.LEFT)) channel.push("turn_left", {"name": id});
+    if (Key.isDown(Key.DOWN)) channel.push("stop", {"name": id});
+    if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": id});
 };
 
 setInterval(()=>{channel.push("update", {body: 0})},10)

@@ -4,7 +4,7 @@ defmodule HelloPhoenix.RoomChannel do
 
   def join("room:" <> user, message, socket) do
     IO.puts user<>" connected"
-    send(self(),{:after_join, message})
+    send(self(),{:after_join, user})
     {:ok, socket}
   end
   def join("room:" <> _private_room_id, _params, _socket) do
@@ -42,6 +42,7 @@ defmodule HelloPhoenix.RoomChannel do
 
 
   def handle_in("turn_left", %{"name" => name}, socket) do
+
      HelloPhoenix.Players.turn_left(%{"name" => name})
      {:noreply, socket}
   end
@@ -61,7 +62,8 @@ defmodule HelloPhoenix.RoomChannel do
 
 
 
-  def handle_info({:after_join, _message}, socket) do
+  def handle_info({:after_join, name}, socket) do
+    HelloPhoenix.Players.new_player(%HelloPhoenix.Player{name: name})
     {:noreply, socket}
   end
 end
