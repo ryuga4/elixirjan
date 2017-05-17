@@ -57,7 +57,7 @@ socket.connect()
 var id = new Date();
 let channel = socket.channel("room:"+JSON.stringify(id), {})
 
-
+var licznik =0
 
 
 
@@ -130,8 +130,8 @@ function update() {
     if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": "default"});
 };
 
-setInterval(()=>{channel.push("update", {body: 0})},1)
-setInterval(()=>{update()},10)
+setInterval(()=>{channel.push("update", {body: 0})},10)
+setInterval(()=>{update()},1)
 
 
 
@@ -143,6 +143,8 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("update", payload => {
+    console.log(licznik)
+    licznik+=1
     render()
     for (var i in payload.value) {
         //channel.push("alert",{msg: JSON.stringify(payload.value[i])})
