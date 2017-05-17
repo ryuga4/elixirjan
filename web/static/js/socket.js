@@ -56,15 +56,9 @@ socket.connect()
 // Now that you are connected, you can join channels with a topic:
 
 let channel = socket.channel("room:lobby", {})
-let chatInput         = document.querySelector("#chat-input")
-let messagesContainer = document.querySelector("#messages")
-let valueItem = document.querySelector("#value")
-let player_button =document.querySelector("#player")
-let player_value= document.querySelector("#player_con")
-player_button.addEventListener("click", event => {
-    channel.push("player", {"name": "default"})
 
-})
+let player_value= document.querySelector("#player_con")
+
 channel.on("player", payload => {
     player_value.innerText=JSON.stringify(payload.value)
 })
@@ -74,14 +68,7 @@ channel.on("update", payload => {
 
 })
 
-chatInput.addEventListener("keypress", event => {
-    if(event.keyCode === 13){
-    console.log("SIEMANOO")
-    channel.push("update", {body: -100})
-    channel.push("new_msg", {body: chatInput.value})
-    chatInput.value = ""
-}
-})
+
 
 var keys = {};
 
@@ -117,18 +104,11 @@ function checkKey(e) {
 
 }
 
-setInterval(()=>{channel.push("update", {body: chatInput.value})},10)
+setInterval(()=>{channel.push("update", {body: 0})},10)
 
 
-channel.on("new_msg", payload => {
-    let messageItem = document.createElement("li");
-messageItem.innerText = `[${Date()}] ${payload.body}`
-messagesContainer.appendChild(messageItem)
-})
 
-channel.on("inc", value => {
-    valueItem.innerText=value.value
-    })
+
 
 //setInterval(function(){ }, 1000);
 channel.join()
