@@ -9,18 +9,27 @@ defmodule HelloPhoenix.Clock do
   end
 
   def init(state) do
-    schedule_work() # Schedule work to be performed at some point
+    schedule_work(@span) # Schedule work to be performed at some point
     {:ok, state}
   end
 
   def handle_info(:work, state) do
     #IO.binwrite("| ")
-    HelloPhoenix.Players.update()
-    schedule_work() # Reschedule once more
+    time=measure(fn -> HelloPhoenix.Players.update() end)
+    #IO.puts time
+    schedule_work(@span-round(time*1000)) # Reschedule once more
     {:noreply, state}
   end
 
-  defp schedule_work() do
-    Process.send_after(self(), :work,@span) # In 2 hours
+  defp schedule_work(time) do
+    Process.send_after(self(), :work,time) # In 2 hours
+  end
+
+  def measure(function) do
+      function
+      |> :timer.tc
+      |> elem(0)
+      |> Kernel./(1_000_000)
   end
 end
+
