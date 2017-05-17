@@ -13,7 +13,8 @@ defmodule HelloPhoenix.Player do
              velocity: [0,0],
              angle: 0,
              turning: :none,
-             move: :none
+             move: :none,
+             inc: 0
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
     x = case a+a2 do
        sth when sth > 1000 -> 1000
@@ -37,7 +38,7 @@ defmodule HelloPhoenix.Player do
   end
 
 
-  def resistance(%HelloPhoenix.Player{velocity: [a,b]}=player) do
+  def resistance(%HelloPhoenix.Player{velocity: [a,b],inc: inc}=player) do
     x= case a*@resistance do
       i when abs(i)<@minspeed -> 0
       i            -> i
@@ -46,7 +47,7 @@ defmodule HelloPhoenix.Player do
       i when abs(i)<@minspeed -> 0
       i            -> i
     end
-    %{player | velocity: [x,y]}
+    %{player | velocity: [x,y], inc: inc+1}
   end
 
   def chech_max (%HelloPhoenix.Player{velocity: [a,b]}=player) do

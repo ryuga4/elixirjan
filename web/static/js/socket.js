@@ -151,8 +151,8 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("update", payload => {
-    console.log(licznik)
-    licznik+=1
+    console.log(payload.value[0].inc)
+    //licznik+=1
     render()
     for (var i in payload.value) {
         //channel.push("alert",{msg: JSON.stringify(payload.value[i])})
