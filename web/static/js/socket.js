@@ -113,21 +113,29 @@ var Key = {
     },
 
     onKeydown: function(event) {
-        this._pressed[event.keyCode] = true;
+       // this._pressed[event.keyCode] = true;
+        if (event.keyCode===Key.UP) channel.push("forward", {"name": id});
+        if (event.keyCode===Key.LEFT) channel.push("turn_left", {"name": id});
+        if (event.keyCode===Key.DOWN) channel.push("stop", {"name": id});
+        if (event.keyCode===Key.RIGHT) channel.push("turn_right", {"name": id});
     },
 
     onKeyup: function(event) {
-        delete this._pressed[event.keyCode];
+      //  delete this._pressed[event.keyCode];
+        if (event.keyCode===Key.UP) channel.push("move_up", {"name": id});
+        if (event.keyCode===Key.LEFT) channel.push("turning_up", {"name": id});
+        if (event.keyCode===Key.DOWN) channel.push("move_up", {"name": id});
+        if (event.keyCode===Key.RIGHT) channel.push("turning_up", {"name": id});
     }
 };
 
 window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
 window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
 function update() {
-    if (Key.isDown(Key.UP)) channel.push("forward", {"name": id});
-    if (Key.isDown(Key.LEFT)) channel.push("turn_left", {"name": id});
-    if (Key.isDown(Key.DOWN)) channel.push("stop", {"name": id});
-    if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": id});
+    //if (Key.isDown(Key.UP)) channel.push("forward", {"name": id});
+   // if (Key.isDown(Key.LEFT)) channel.push("turn_left", {"name": id});
+   // if (Key.isDown(Key.DOWN)) channel.push("stop", {"name": id});
+    //if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": id});
 };
 
 setInterval(()=>{channel.push("update", {body: 0})},10)

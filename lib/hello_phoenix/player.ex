@@ -11,12 +11,20 @@ defmodule HelloPhoenix.Player do
   defstruct name: "default",
              position: [500,500],
              velocity: [0,0],
-             angle: 0
+             angle: 0,
+             turning: :none,
+             move: :none
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
     %{player | position: [a+a2,b+b2]}
   end
 
+  def set_turning(%HelloPhoenix.Player{}=player, turning) do
+    %{player | turning: turning}
+  end
 
+  def set_move(%HelloPhoenix.Player{}=player, move) do
+      %{player | move: move}
+  end
 
 
   def resistance(%HelloPhoenix.Player{velocity: [a,b]}=player) do
@@ -37,6 +45,30 @@ defmodule HelloPhoenix.Player do
       length when length >  @maxspeed  -> %{player | velocity: [@maxspeed*a/length,@maxspeed*b/length]}
     end
   end
+  def check_turning(%HelloPhoenix.Player{turning: :none}=player) do
+      player
+  end
+
+  def check_turning(%HelloPhoenix.Player{turning: turning}=player) do
+    case turning do
+      :left -> player |> turn_left()
+      :right -> player |> turn_right()
+      e -> IO.puts e
+    end
+  end
+
+  def check_move(%HelloPhoenix.Player{move: :none}=player) do
+        player
+    end
+
+    def check_move(%HelloPhoenix.Player{move: move}=player) do
+      case move do
+        :forward -> player |> forward()
+        :stop -> player |> stop()
+        e -> IO.puts e
+      end
+    end
+
 
   def forward (%HelloPhoenix.Player{velocity: [a,b], angle: angle}=player) do
     x=@accleration*:math.cos(angle)

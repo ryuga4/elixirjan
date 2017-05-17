@@ -10,30 +10,41 @@ defmodule HelloPhoenix.Players do
   end
 
 
+
+
   def get() do
     Agent.get(__MODULE__, &(&1))
   end
 
+  def move_up(%{"name" => name}) do
+    action(name,&Player.set_move(&1,:none))
+  end
+  def turning_up(%{"name" => name}) do
+    action(name,&Player.set_turning(&1,:none))
+  end
+
   def forward(%{"name" => name}) do
-    action(name,&Player.forward(&1))
+    action(name,&Player.set_move(&1,:forward))
   end
 
   def turn_left(%{"name" => name}) do
-    action(name,&Player.turn_left(&1))
+    action(name,&Player.set_turning(&1,:left))
   end
 
   def turn_right(%{"name" => name}) do
-    action(name,&Player.turn_right(&1))
+    action(name,&Player.set_turning(&1,:right))
   end
 
   def stop(%{"name" => name}) do
-    action(name,&Player.stop(&1))
+    action(name,&Player.set_move(&1,:stop))
   end
 
   def update() do
     Agent.update(__MODULE__, fn i -> i
         |> Enum.map(&(
         &1
+        |> Player.check_move()
+        |> Player.check_turning()
         |> Player.resistance()
         |> Player.move()
         |> Player.chech_max()
