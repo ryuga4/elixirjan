@@ -12,15 +12,15 @@ defmodule HelloPhoenix.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
 
-  def handle_in("new_msg", %{"body" => body}, socket) do
-    broadcast! socket, "new_msg", %{body: body}
-    {:noreply, socket}
+
+
+
+  def handle_in("alert", %{"msg" => msg}, socket) do
+    IO.puts msg
+    {:noreply,socket}
   end
 
-  def handle_out("new_msg", payload, socket) do
-    push socket, "new_msg", payload
-    {:noreply, socket}
-  end
+
 
   def handle_in("update", %{"body" => body}, socket) do
       number=HelloPhoenix.State.get()
@@ -28,7 +28,7 @@ defmodule HelloPhoenix.RoomChannel do
       #HelloPhoenix.Players.update()
 
       #IO.puts value
-      broadcast! socket, "inc", %{value: number}
+      #broadcast! socket, "inc", %{value: number}
       broadcast! socket, "update", %{value: value}
       {:noreply, socket}
   end
@@ -39,12 +39,7 @@ defmodule HelloPhoenix.RoomChannel do
 #  end
 
 
-  def handle_in("player", %{"name" => name}, socket) do
-      HelloPhoenix.Players.forward(%{"name" => name})
-      value = HelloPhoenix.Players.get()
-      broadcast! socket, "update", %{value: value}
-      {:noreply, socket}
-  end
+
 
 
 
@@ -59,6 +54,10 @@ defmodule HelloPhoenix.RoomChannel do
   def handle_in("forward", %{"name" => name}, socket) do
      HelloPhoenix.Players.forward(%{"name" => name})
      {:noreply, socket}
+  end
+  def handle_in("stop", %{"name" => name}, socket) do
+       HelloPhoenix.Players.stop(%{"name" => name})
+       {:noreply, socket}
   end
 
 

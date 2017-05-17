@@ -57,18 +57,13 @@ socket.connect()
 
 let channel = socket.channel("room:lobby", {})
 
-let player_value= document.querySelector("#player_con")
-
-channel.on("player", payload => {
-    player_value.innerText=JSON.stringify(payload.value)
-})
-
-channel.on("update", payload => {
-    player_value.innerText=JSON.stringify(payload.value)
-
-})
 
 
+
+
+
+
+/*
 
 var keys = {};
 
@@ -103,8 +98,40 @@ function checkKey(e) {
     }
 
 }
+*/
+
+var Key = {
+    _pressed: {},
+
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40,
+
+    isDown: function(keyCode) {
+        return this._pressed[keyCode];
+    },
+
+    onKeydown: function(event) {
+        this._pressed[event.keyCode] = true;
+    },
+
+    onKeyup: function(event) {
+        delete this._pressed[event.keyCode];
+    }
+};
+
+window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
+window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
+function update() {
+    if (Key.isDown(Key.UP)) channel.push("forward", {"name": "default"});
+    if (Key.isDown(Key.LEFT)) channel.push("turn_left", {"name": "default"});
+    if (Key.isDown(Key.DOWN)) channel.push("stop", {"name": "default"});
+    if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": "default"});
+};
 
 setInterval(()=>{channel.push("update", {body: 0})},10)
+setInterval(()=>{update()},10)
 
 
 
@@ -114,6 +141,53 @@ setInterval(()=>{channel.push("update", {body: 0})},10)
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+channel.on("update", payload => {
+    render()
+    for (var i in payload.value) {
+        //channel.push("alert",{msg: JSON.stringify(payload.value[i])})
+        triangle(payload.value[i].position[0],payload.value[i].position[1],payload.value[i].angle)
+    }
+})
+
+var canvas = document.getElementById("myCanvas")
+var ctx = canvas.getContext('2d')
+
+function render() {
+    ctx.fillStyle = 'rgb(255,255,255)';
+    ctx.fillRect(0, 0, 1000, 700);
+    ctx.fillStyle= 'rgb(0,0,0)'
+    ctx.lineWidth = 1;
+
+}
+
+function triangle(x,y,angle){
+    var angle2=angle//Math.PI/2
+    var path=new Path2D();
+    path.moveTo(x+Math.cos(angle2)*100,y+Math.sin(angle2)*100);
+    path.lineTo(x+Math.cos(angle2+2*Math.PI/3)*70,y+Math.sin(angle2+2*Math.PI/3)*70);
+    path.lineTo(x+Math.cos(angle2-2*Math.PI/3)*70,y+Math.sin(angle2-2*Math.PI/3)*70);
+    ctx.fill(path);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -26,6 +26,10 @@ defmodule HelloPhoenix.Players do
     action(name,&Player.turn_right(&1))
   end
 
+  def stop(%{"name" => name}) do
+    action(name,&Player.stop(&1))
+  end
+
   def update() do
     Agent.update(__MODULE__, fn i -> i
         |> Enum.map(&(
