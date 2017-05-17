@@ -122,7 +122,7 @@ var Key = {
 
     onKeyup: function(event) {
       //  delete this._pressed[event.keyCode];
-        if (event.keyCode===Key.UP) channel.push("move_up", {"name": id});
+        if (event.keyCode===Key.UP ) channel.push("move_up", {"name": id});
         if (event.keyCode===Key.LEFT) channel.push("turning_up", {"name": id});
         if (event.keyCode===Key.DOWN) channel.push("move_up", {"name": id});
         if (event.keyCode===Key.RIGHT) channel.push("turning_up", {"name": id});

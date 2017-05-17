@@ -1,9 +1,9 @@
 defmodule HelloPhoenix.Player do
   @maxspeed 10
   @minspeed 0.01
-  @resistance 0.99
-  @accleration 0.5
-  @turn_speed 0.03
+  @resistance 0.96
+  @accleration 0.8
+  @turn_speed 0.06
   @pi 3.141592653589793
 
 
