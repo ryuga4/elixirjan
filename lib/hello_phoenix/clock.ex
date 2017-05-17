@@ -23,7 +23,10 @@ defmodule HelloPhoenix.Clock do
     time=measure(fn -> HelloPhoenix.Players.update() end)
     Agent.update(__MODULE__,&(%{&1| val: time*1000}))
     #IO.puts time
-    schedule_work(@span-round(time*1000)) # Reschedule once more
+    schedule_work(case @span-round(time*1000) do
+                x when x>0 -> x
+                x when x<=0 -> 0
+    end) # Reschedule once more
     {:noreply, state}
   end
 
