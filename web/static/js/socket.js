@@ -111,21 +111,28 @@ var Key = {
     isDown: function(keyCode) {
         return this._pressed[keyCode];
     },
-
+    check: function() {
+        if(this._pressed[Key.UP]&&!this._pressed[Key.DOWN]) channel.push("forward", {"name": id})
+        if(this._pressed[Key.DOWN]&&!this._pressed[Key.UP]) channel.push("stop", {"name": id})
+        if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) channel.push("turn_left", {"name": id})
+        if(this._pressed[Key.RIGHT]&&!this._pressed[Key.LEFT]) channel.push("turn_right", {"name": id})
+        if(this._pressed[Key.UP]&&this._pressed[Key.DOWN]) channel.push("move_up", {"name": id})
+        if(this._pressed[Key.LEFT]&&this._pressed[Key.RIGHT]) channel.push("turning_up", {"name": id})
+        if(!this._pressed[Key.UP]&&!this._pressed[Key.DOWN]) channel.push("move_up", {"name": id})
+        if(!this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) channel.push("turning_up", {"name": id})
+    },
     onKeydown: function(event) {
-       // this._pressed[event.keyCode] = true;
-        if (event.keyCode===Key.UP) channel.push("forward", {"name": id});
-        if (event.keyCode===Key.LEFT) channel.push("turn_left", {"name": id});
-        if (event.keyCode===Key.DOWN) channel.push("stop", {"name": id});
-        if (event.keyCode===Key.RIGHT) channel.push("turn_right", {"name": id});
+        if (this._pressed[event.keyCode]) return 0
+        console.log(this._pressed)
+        this._pressed[event.keyCode] = true;
+        this.check()
     },
 
     onKeyup: function(event) {
-      //  delete this._pressed[event.keyCode];
-        if (event.keyCode===Key.UP ) channel.push("move_up", {"name": id});
-        if (event.keyCode===Key.LEFT) channel.push("turning_up", {"name": id});
-        if (event.keyCode===Key.DOWN) channel.push("move_up", {"name": id});
-        if (event.keyCode===Key.RIGHT) channel.push("turning_up", {"name": id});
+        //console.log(this._pressed)
+        if (!this._pressed[event.keyCode]) return 0
+        this._pressed[event.keyCode] = false;
+        this.check()
     }
 };
 
@@ -156,7 +163,7 @@ channel.join()
 channel.on("update", payload => {
     helper.n+=1
     helper.inc+=payload.time.val
-    console.log(payload.value[0].inc+" "+helper.inc/helper.n)
+   // console.log(payload.value[0].inc+" "+helper.inc/helper.n)
 
     //licznik+=1
     render()
