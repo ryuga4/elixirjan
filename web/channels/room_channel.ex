@@ -59,6 +59,7 @@ defmodule HelloPhoenix.RoomChannel do
        {:noreply, socket}
   end
   def handle_in("move_up", %{"name" => name}, socket) do
+
      HelloPhoenix.Players.move_up(%{"name" => name})
      {:noreply, socket}
   end

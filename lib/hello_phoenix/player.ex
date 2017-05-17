@@ -15,7 +15,17 @@ defmodule HelloPhoenix.Player do
              turning: :none,
              move: :none
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
-    %{player | position: [a+a2,b+b2]}
+    x = case a+a2 do
+       sth when sth > 1000 -> 1000
+       sth when sth < 0    -> 0
+       sth                 -> sth
+    end
+    y = case b+b2 do
+       sth when sth > 700 -> 700
+       sth when sth < 0    -> 0
+       sth                 -> sth
+    end
+    %{player | position: [x,y]}
   end
 
   def set_turning(%HelloPhoenix.Player{}=player, turning) do
