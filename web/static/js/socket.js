@@ -163,7 +163,7 @@ channel.join()
 channel.on("update", payload => {
     helper.n+=1
     helper.inc+=payload.time.val
-   // console.log(payload.value[0].inc+" "+helper.inc/helper.n)
+    console.log(payload.value[0].inc+" "+helper.inc/helper.n)
 
     //licznik+=1
     render()
@@ -192,8 +192,6 @@ function triangle(x,y,angle){
     path.lineTo(x+Math.cos(angle2-2*Math.PI/3)*70,y+Math.sin(angle2-2*Math.PI/3)*70);
     ctx.fill(path);
 }
-
-
 
 
 
