@@ -55,7 +55,7 @@ socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
 var id = JSON.stringify(new Date());
-let channel = socket.channel("room:"+id, {})
+let channel = socket.channel("room:lobby", {name: id})
 
 var licznik =0
 
