@@ -65,9 +65,15 @@ defmodule HelloPhoenix.RoomChannel do
 
 
 
+  def terminate(msg, socket) do
+  HelloPhoenix.Players.remove(inspect(self()))
+  IO.puts(inspect(self())<>" left")
+    {:shutdown, :left}
+  end
 
   def handle_info({:after_join, name}, socket) do
-    HelloPhoenix.Players.new_player(%HelloPhoenix.Player{name: name})
+    IO.puts(inspect(self())<>" joined")
+    HelloPhoenix.Players.new_player(%HelloPhoenix.Player{name: name, key: inspect(self())})
     {:noreply, socket}
   end
 end

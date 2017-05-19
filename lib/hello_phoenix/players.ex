@@ -16,6 +16,10 @@ defmodule HelloPhoenix.Players do
     Agent.get(__MODULE__, &(&1))
   end
 
+  def remove(key) do
+    Agent.update(__MODULE__,fn i -> i |> Enum.filter(&(&1.key != key)) end)
+  end
+
   def move_up(%{"name" => name}) do
     action(name,&Player.set_move(&1,:none))
   end

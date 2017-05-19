@@ -15,7 +15,8 @@ defmodule HelloPhoenix.Player do
              turning: :none,
              move: :none,
              inc: 0,
-             help: 0
+             help: 0,
+             key: "default"
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
     x = case a+a2 do
        sth when sth > 1000 -> 1000

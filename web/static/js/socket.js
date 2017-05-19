@@ -169,7 +169,7 @@ channel.on("update", payload => {
     render()
     for (var i in payload.value) {
         //channel.push("alert",{msg: JSON.stringify(payload.value[i])})
-        triangle(payload.value[i].position[0],payload.value[i].position[1],payload.value[i].angle)
+        triangle(payload.value[i].position[0],payload.value[i].position[1],payload.value[i].angle,payload.value[i].name===id)
     }
 })
 
@@ -179,12 +179,14 @@ var ctx = canvas.getContext('2d')
 function render() {
     ctx.fillStyle = 'rgb(255,255,255)';
     ctx.fillRect(0, 0, 1000, 700);
-    ctx.fillStyle= 'rgb(0,0,0)'
+
     ctx.lineWidth = 1;
 
 }
 
-function triangle(x,y,angle){
+function triangle(x,y,angle,player){
+    if (!player) ctx.fillStyle= 'rgb(0,0,0)'
+    else ctx.fillStyle= 'rgb(120,30,230)'
     var angle2=angle//Math.PI/2
     var path=new Path2D();
     path.moveTo(x+Math.cos(angle2)*100,y+Math.sin(angle2)*100);
