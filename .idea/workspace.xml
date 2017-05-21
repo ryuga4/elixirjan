@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdbd6db6-2a19-4a0d-8c35-7807fcfe2c90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/hello_phoenix/players.ex" afterPath="$PROJECT_DIR$/lib/hello_phoenix/players.ex" />
-    </list>
+    <list default="true" id="bdbd6db6-2a19-4a0d-8c35-7807fcfe2c90" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/_build/dev/lib/hellophoenix/ebin/" />
     <ignored path="$PROJECT_DIR$/_build/test/lib/hellophoenix/ebin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -938,7 +936,7 @@
       <workItem from="1495232178909" duration="1174000" />
       <workItem from="1495233781044" duration="115000" />
       <workItem from="1495393354704" duration="798000" />
-      <workItem from="1495394168158" duration="4226000" />
+      <workItem from="1495394168158" duration="4401000" />
     </task>
     <task id="LOCAL-00001" summary="Jakieś testy">
       <created>1494798280499</created>
@@ -958,7 +956,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88036000" />
+    <option name="totallyTimeSpent" value="88211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="7" />
