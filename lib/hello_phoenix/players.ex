@@ -5,13 +5,13 @@ defmodule HelloPhoenix.Players do
 
 
   def start_link() do
-    Agent.start_link(fn -> [] end,name: __MODULE__)
+    Agent.start_link(fn -> %{players: []} end,name: __MODULE__)
   end
 
   def new_player(player) do
     case get() do
-        [] -> Agent.update(__MODULE__,&([HelloPhoenix.Player.add_bomb(player)|&1]))
-        _ -> Agent.update(__MODULE__,&([player|&1]))
+        [] -> Agent.update(__MODULE__,&(%{players: [HelloPhoenix.Player.add_bomb(player)|&1.players]}))
+        _ -> Agent.update(__MODULE__,&(%{players: [player|&1.players]}))
     end
   end
   def check_bomb([]) do
@@ -66,11 +66,11 @@ defmodule HelloPhoenix.Players do
 
 
   def get() do
-    Agent.get(__MODULE__, &(&1))
+    Agent.get(__MODULE__, &(&1.players))
   end
 
   def remove(key) do
-    Agent.update(__MODULE__,fn i -> i |> Enum.filter(&(&1.key != key)) end)
+    Agent.update(__MODULE__,fn i -> %{ i | players: i.players |> Enum.filter(&(&1.key != key)) }  end)
   end
 
   def move_up(%{"name" => name}) do
@@ -97,7 +97,7 @@ defmodule HelloPhoenix.Players do
   end
 
   def update() do
-    Agent.update(__MODULE__, fn i -> i
+    Agent.update(__MODULE__, fn i -> %{i | players: i.players
         |> Enum.map(&(
         &1
         |> Player.check_move()
@@ -107,15 +107,15 @@ defmodule HelloPhoenix.Players do
         |> Player.chech_max()
         )
         )|> check_bomb()
-    end)
+    }end)
   end
 
   def action(name,func) do
-    Agent.update(__MODULE__, fn i -> i
+    Agent.update(__MODULE__, fn i -> %{i | players: i.players
         |> Enum.map(&(case &1.name do
             name2 when name2==name -> &1 |> func.()
             _    -> &1
-        end  ))
+        end  ))}
     end)
   end
 

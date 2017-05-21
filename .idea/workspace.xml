@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdbd6db6-2a19-4a0d-8c35-7807fcfe2c90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/hello_phoenix/player.ex" afterPath="$PROJECT_DIR$/lib/hello_phoenix/player.ex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/hello_phoenix/players.ex" afterPath="$PROJECT_DIR$/lib/hello_phoenix/players.ex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/channels/room_channel.ex" afterPath="$PROJECT_DIR$/web/channels/room_channel.ex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/static/js/socket.js" afterPath="$PROJECT_DIR$/web/static/js/socket.js" />
     </list>
     <ignored path="$PROJECT_DIR$/_build/dev/lib/hellophoenix/ebin/" />
     <ignored path="$PROJECT_DIR$/_build/test/lib/hellophoenix/ebin/" />
@@ -33,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player.ex" pinned="false" current-in-tab="true">
+      <file leaf-file-name="player.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/player.ex">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -43,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="players.ex" pinned="false" current-in-tab="false">
+      <file leaf-file-name="players.ex" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/players.ex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="31" column="87" lean-forward="false" selection-start-line="31" selection-start-column="87" selection-end-line="31" selection-end-column="87" />
+            <state relative-caret-position="286">
+              <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -188,8 +184,8 @@
         <option value="$PROJECT_DIR$/lib/hello_phoenix/clock.ex" />
         <option value="$PROJECT_DIR$/web/channels/room_channel.ex" />
         <option value="$PROJECT_DIR$/web/static/js/socket.js" />
-        <option value="$PROJECT_DIR$/lib/hello_phoenix/players.ex" />
         <option value="$PROJECT_DIR$/lib/hello_phoenix/player.ex" />
+        <option value="$PROJECT_DIR$/lib/hello_phoenix/players.ex" />
       </list>
     </option>
   </component>
@@ -942,7 +938,7 @@
       <workItem from="1495232178909" duration="1174000" />
       <workItem from="1495233781044" duration="115000" />
       <workItem from="1495393354704" duration="798000" />
-      <workItem from="1495394168158" duration="3665000" />
+      <workItem from="1495394168158" duration="4226000" />
     </task>
     <task id="LOCAL-00001" summary="Jakieś testy">
       <created>1494798280499</created>
@@ -962,7 +958,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87475000" />
+    <option name="totallyTimeSpent" value="88036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="7" />
@@ -1336,14 +1332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/players.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" column="87" lean-forward="false" selection-start-line="31" selection-start-column="87" selection-end-line="31" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/channels/room_channel.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -1356,6 +1344,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/players.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
           <folding />
         </state>
       </provider>
