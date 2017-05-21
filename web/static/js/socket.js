@@ -169,7 +169,13 @@ channel.on("update", payload => {
     render()
     for (var i in payload.value) {
         //channel.push("alert",{msg: JSON.stringify(payload.value[i])})
-        triangle(payload.value[i].position[0],payload.value[i].position[1],payload.value[i].angle,payload.value[i].name===id)
+        var has_bomb=payload.value[i].bomb
+        var x=payload.value[i].position[0]
+        var y=payload.value[i].position[1]
+        var angle=payload.value[i].angle
+        var you = payload.value[i].name===id
+        var after_bomb=payload.value[i].after_bomb
+        triangle(x,y,angle,you,has_bomb,after_bomb)
     }
 })
 
@@ -184,9 +190,11 @@ function render() {
 
 }
 
-function triangle(x,y,angle,player){
-    if (!player) ctx.fillStyle= 'rgb(0,0,0)'
+function triangle(x,y,angle,player,bomb,after_bomb){
+    if (!player) ctx.fillStyle= 'rgb(100,100,100)'
     else ctx.fillStyle= 'rgb(120,30,230)'
+    if (bomb) ctx.fillStyle= 'rgb(0,0,0)'
+    if (after_bomb) ctx.fillStyle= 'rgb(255,0,0)'
     var angle2=angle//Math.PI/2
     var path=new Path2D();
     path.moveTo(x+Math.cos(angle2)*100,y+Math.sin(angle2)*100);

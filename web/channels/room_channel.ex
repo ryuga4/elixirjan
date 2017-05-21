@@ -21,7 +21,9 @@ defmodule HelloPhoenix.RoomChannel do
 
 
 
-  def handle_in("update", %{"body" => body}, socket) do
+
+
+  def handle_in("update", _msg, socket) do
       push socket, "update", %{value: HelloPhoenix.Players.get(), time: HelloPhoenix.Clock.get()}
       {:noreply, socket}
   end
@@ -65,9 +67,8 @@ defmodule HelloPhoenix.RoomChannel do
 
 
 
-  def terminate(msg, socket) do
-  HelloPhoenix.Players.remove(inspect(self()))
-  IO.puts(inspect(self())<>" left")
+  def terminate(_msg, _socket) do
+    HelloPhoenix.Players.remove(inspect(self()))
     {:shutdown, :left}
   end
 

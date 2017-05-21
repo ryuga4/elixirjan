@@ -1,30 +1,36 @@
 defmodule HelloPhoenix.Player do
   @maxspeed 10
+  @maxspeed_bomb 50
   @minspeed 0.01
   @resistance 0.96
   @accleration 0.8
   @turn_speed 0.06
   @pi 3.141592653589793
-
+  @width 1000
+  @height 700
+  @stop 0.5
 
 
   defstruct name: "default",
              position: [500,500],
              velocity: [0,0],
              angle: 0,
+             max_speed: @maxspeed,
              turning: :none,
              move: :none,
              inc: 0,
              help: 0,
-             key: "default"
+             key: "default",
+             bomb: false,
+             after_bomb: false
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
     x = case a+a2 do
-       sth when sth > 1000 -> 1000
+       sth when sth > @width -> @width
        sth when sth < 0    -> 0
        sth                 -> sth
     end
     y = case b+b2 do
-       sth when sth > 700 -> 700
+       sth when sth > @height -> @height
        sth when sth < 0    -> 0
        sth                 -> sth
     end
@@ -54,10 +60,10 @@ defmodule HelloPhoenix.Player do
     %{player | velocity: [x,y], inc: inc+1}
   end
 
-  def chech_max (%HelloPhoenix.Player{velocity: [a,b]}=player) do
+  def chech_max (%HelloPhoenix.Player{velocity: [a,b], max_speed: max_speed}=player) do
     case :math.sqrt(a*a+b*b) do
-      length when length <= @maxspeed -> player
-      length when length >  @maxspeed  -> %{player | velocity: [@maxspeed*a/length,@maxspeed*b/length]}
+      length when length <= max_speed -> player
+      length when length >  max_speed  -> %{player | velocity: [max_speed*a/length,max_speed*b/length]}
     end
   end
   def check_turning(%HelloPhoenix.Player{turning: :none}=player) do
@@ -92,8 +98,8 @@ defmodule HelloPhoenix.Player do
   end
 
   def stop(%HelloPhoenix.Player{velocity: [a,b], angle: angle}=player) do
-      x=@accleration*:math.cos(angle)*0.5
-      y=@accleration*:math.sin(angle)*0.5
+      x=@accleration*:math.cos(angle)*@stop
+      y=@accleration*:math.sin(angle)*@stop
       %{player | velocity: [a-x,b-y]}
   end
 
@@ -112,6 +118,22 @@ defmodule HelloPhoenix.Player do
                             a when a >= 0 -> a
                           end}
   end
+
+  def add_bomb(%HelloPhoenix.Player{}=player) do
+    %{player | bomb: true, max_speed: @maxspeed_bomb}
+  end
+
+  def remove_bomb(%HelloPhoenix.Player{}=player) do
+    %{player | bomb: false, after_bomb: true}
+  end
+
+  def out_of_range(%HelloPhoenix.Player{}=player) do
+      %{player | after_bomb: false, max_speed: @maxspeed}
+  end
+
+
+
+
 
 
 
