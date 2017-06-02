@@ -145,7 +145,7 @@ function update() {
     //if (Key.isDown(Key.RIGHT)) channel.push("turn_right", {"name": id});
 };
 
-setInterval(()=>{channel.push("update", {body: 0})},10)
+//setInterval(()=>{channel.push("update", {body: 0})},10)
 setInterval(()=>{update()},1)
 
 var helper = {

@@ -23,6 +23,9 @@ defmodule HelloPhoenix.Clock do
     time=measure(fn -> HelloPhoenix.Players.update() end)
     Agent.update(__MODULE__,&(%{&1| val: time*1000}))
     #IO.puts time
+
+    HelloPhoenix.Endpoint.broadcast("room:lobby", "update", %{value: HelloPhoenix.Players.get(), time: HelloPhoenix.Clock.get()})
+
     schedule_work(case @span-round(time*1000) do
                 x when x>0 -> x
                 x when x<=0 -> 0
@@ -31,7 +34,7 @@ defmodule HelloPhoenix.Clock do
   end
 
   defp schedule_work(time) do
-    Process.send_after(self(), :work,time) # In 2 hours
+    Process.send_after(self(), :work,time)
   end
 
   def measure(function) do

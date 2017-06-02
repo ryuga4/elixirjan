@@ -36,7 +36,9 @@ defmodule HelloPhoenix.Player do
     end
     %{player | position: [x,y]}
   end
-
+  
+  
+  
   def set_turning(%HelloPhoenix.Player{}=player, turning) do
     %{player | turning: turning}
   end

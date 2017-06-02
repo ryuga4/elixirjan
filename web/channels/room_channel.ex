@@ -23,10 +23,10 @@ defmodule HelloPhoenix.RoomChannel do
 
 
 
-  def handle_in("update", _msg, socket) do
-      push socket, "update", %{value: HelloPhoenix.Players.get(), time: HelloPhoenix.Clock.get()}
-      {:noreply, socket}
-  end
+#  def handle_in("update", _msg, socket) do
+#      push socket, "update", %{value: HelloPhoenix.Players.get(), time: HelloPhoenix.Clock.get()}
+#      {:noreply, socket}
+#  end
 
 #  def handle_out("update", payload, socket) do
 #      push socket, "update", payload
