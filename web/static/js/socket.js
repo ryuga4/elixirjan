@@ -192,8 +192,8 @@ function render() {
 
 function triangle(x,y,angle,player,bomb,after_bomb){
     if (!player) ctx.fillStyle= 'rgb(100,100,100)'
-    else ctx.fillStyle= 'rgb(120,30,230)'
-    if (bomb) ctx.fillStyle= 'rgb(0,0,0)'
+    else ctx.fillStyle= 'rgb(0,0,0)'
+    if (bomb) ctx.fillStyle= 'rgb(120,30,230)'
     if (after_bomb) ctx.fillStyle= 'rgb(255,0,0)'
     var angle2=angle//Math.PI/2
     var path=new Path2D();
