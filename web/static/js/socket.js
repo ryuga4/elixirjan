@@ -11,6 +11,9 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // For example, imagine you have an authentication plug, `MyAuth`,
 // which authenticates the session and assigns a `:current_user`.
 // If the current user exists you can assign the user's token in
+
+
+
 // the connection for use in the layout.
 //
 // In your "web/router.ex":
