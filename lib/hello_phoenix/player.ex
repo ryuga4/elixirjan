@@ -1,10 +1,12 @@
 defmodule HelloPhoenix.Player do
-  @maxspeed 8
-  @maxspeed_bomb 12
+  @maxspeed 6
+  @maxspeed_bomb 10
   @minspeed 0.01
   @resistance 0.96
-  @accleration 0.5
+  @acceleration 0.4
+  @acceleration_bomb 0.5
   @turn_speed 0.06
+  @turn_speed_bomb 0.07
   @pi 3.141592653589793
   @width 1000
   @height 700
@@ -15,8 +17,10 @@ defmodule HelloPhoenix.Player do
              position: [500,500],
              velocity: [0,0],
              angle: 0,
+             acceleration: @acceleration,
              max_speed: @maxspeed,
              turning: :none,
+             turn_speed: @turn_speed,
              move: :none,
              inc: 0,
              help: 0,
@@ -95,36 +99,36 @@ defmodule HelloPhoenix.Player do
     end
 
 
-  def forward (%HelloPhoenix.Player{velocity: [a,b], angle: angle}=player) do
-    x=@accleration*:math.cos(angle)
-    y=@accleration*:math.sin(angle)
+  def forward (%HelloPhoenix.Player{velocity: [a,b], angle: angle,acceleration: acceleration}=player) do
+    x=acceleration*:math.cos(angle)
+    y=acceleration*:math.sin(angle)
     %{player | velocity: [a+x,b+y]}
   end
 
-  def stop(%HelloPhoenix.Player{velocity: [a,b], angle: angle}=player) do
-      x=@accleration*:math.cos(angle)*@stop
-      y=@accleration*:math.sin(angle)*@stop
+  def stop(%HelloPhoenix.Player{velocity: [a,b], angle: angle,acceleration: acceleration}=player) do
+      x=acceleration*:math.cos(angle)*@stop
+      y=acceleration*:math.sin(angle)*@stop
       %{player | velocity: [a-x,b-y]}
   end
 
-  def turn_right(%HelloPhoenix.Player{angle: angle}=player) do
+  def turn_right(%HelloPhoenix.Player{angle: angle,turn_speed: turn_speed}=player) do
     pi=@pi*2
-    %{player | angle: case angle+@turn_speed do
+    %{player | angle: case angle+turn_speed do
                             a when a >= pi -> a - pi
                             a when a < pi -> a
                           end}
   end
 
-  def turn_left(%HelloPhoenix.Player{angle: angle}=player) do
+  def turn_left(%HelloPhoenix.Player{angle: angle,turn_speed: turn_speed}=player) do
     pi=@pi*2
-    %{player | angle: case angle-@turn_speed do
+    %{player | angle: case angle-turn_speed do
                             a when a < 0 -> pi - a
                             a when a >= 0 -> a
                           end}
   end
 
   def add_bomb(%HelloPhoenix.Player{}=player) do
-    %{player | bomb: true, max_speed: @maxspeed_bomb}
+    %{player | bomb: true, max_speed: @maxspeed_bomb, turn_speed: @turn_speed_bomb,acceleration: @acceleration_bomb}
   end
 
   def remove_bomb(%HelloPhoenix.Player{}=player) do
@@ -132,7 +136,7 @@ defmodule HelloPhoenix.Player do
   end
 
   def out_of_range(%HelloPhoenix.Player{}=player) do
-      %{player | after_bomb: false, max_speed: @maxspeed}
+      %{player | after_bomb: false, max_speed: @maxspeed, turn_speed: @turn_speed,acceleration: @acceleration}
   end
 
 
