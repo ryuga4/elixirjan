@@ -164,10 +164,14 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("update", payload => {
+    helper.n+=payload.timeSERWER
+    helper.inc+=1
+    console.log("time: "+helper.n/helper.inc)
 
-    console.log("time: "+payload.time)
-
-    //licznik+=1
+    if (helper.n>=100) {
+        helper.n=0
+        helper.inc=0
+    }
     render()
     for (var i in payload.value) {
         //channel.push("alert",{msg: JSON.stringify(payload.value[i])})

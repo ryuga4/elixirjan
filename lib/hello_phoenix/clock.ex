@@ -20,10 +20,10 @@ defmodule HelloPhoenix.Clock do
 
   def handle_info(:work, state) do
     #IO.binwrite("| ")
-    time=measure(fn -> HelloPhoenix.Players.update() end)
+    time=measure(fn -> spawn fn -> HelloPhoenix.Players.update() end end)
     %{players: players, bomb: bomb,time: time2} = HelloPhoenix.Players.get_info()
     spawn fn -> HelloPhoenix.AutoPilot.moveall(players) end
-    HelloPhoenix.Endpoint.broadcast("room:lobby", "update", %{value: players, bomb: bomb,time: time2})
+    HelloPhoenix.Endpoint.broadcast("room:lobby", "update", %{value: players, bomb: bomb,time: time2,timeSERWER: time})
     #IO.puts(time)
     schedule_work(case @span-round(time*1000) do
                 x when x>0 -> x
