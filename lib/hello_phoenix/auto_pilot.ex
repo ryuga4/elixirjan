@@ -4,7 +4,7 @@ defmodule HelloPhoenix.AutoPilot do
   @width 1000
   @height 700
   @border 50
-  def start_link do
+  def start_link() do
     GenServer.start_link(__MODULE__, %{})
     Agent.start_link(fn -> %{names: []} end,name: __MODULE__)
   end
