@@ -121,7 +121,6 @@ var Key = {
         if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) {
             var d = new Date();
             timer=d.getMilliseconds()
-            console.log(timer)
             channel.push("turn_left", {"name": id})
         }
         if(this._pressed[Key.RIGHT]&&!this._pressed[Key.LEFT]) channel.push("turn_right", {"name": id})
@@ -164,17 +163,18 @@ var helper = {
 }
 
 
+
+//setInterval(function(){ }, 1000);
+channel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
 channel.on("turned",payload => {
 var d = new Date();
     d.getMilliseconds()-timer
     timer=0
     console.log(d.getMilliseconds()-timer)
  })
-//setInterval(function(){ }, 1000);
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
-
 channel.on("update", payload => {
     console.log("UPDATE")
 

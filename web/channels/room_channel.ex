@@ -40,7 +40,7 @@ defmodule HelloPhoenix.RoomChannel do
 
   def handle_in("turn_left", %{"name" => name}, socket) do
      HelloPhoenix.Players.turn_left(%{"name" => name})
-     push socket, "turned", %{value: :os.system_time(:millisecond)}
+     push socket, "turned", %{}
      {:noreply, socket}
   end
   def handle_in("turn_right", %{"name" => name}, socket) do
