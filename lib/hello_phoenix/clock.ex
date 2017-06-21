@@ -20,8 +20,8 @@ defmodule HelloPhoenix.Clock do
 
   def handle_info(:work, state) do
     #IO.binwrite("| ")
+    %{players: players, bomb: bomb,time: time2} = HelloPhoenix.Players.get_info()
     time=measure(fn -> HelloPhoenix.Players.update()
-                       %{players: players, bomb: bomb,time: time2} = HelloPhoenix.Players.get_info()
                        HelloPhoenix.AutoPilot.moveall(players)
                        end)
 
