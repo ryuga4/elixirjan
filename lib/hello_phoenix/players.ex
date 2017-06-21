@@ -37,8 +37,8 @@ defmodule HelloPhoenix.Players do
   def tick(time) do
 
     time2=measure(fn ->
-    IO.puts time
-    IO.inspect(HelloPhoenix.Players.get_info().players)
+    #IO.puts time
+    #IO.inspect(HelloPhoenix.Players.get_info().players)
     Agent.update(__MODULE__,&(%{&1|time: time})) end)
 
 

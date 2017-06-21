@@ -29,10 +29,12 @@ defmodule HelloPhoenix.AutoPilot do
   def move(name,players_all) do
     players = players_all |> Enum.filter(&(&1.name != name))
     player  = players_all |> Enum.find(&(&1.name == name))
-
-    case player.bomb do
-      true -> chase(player,players)
-      false -> run_away(player,Enum.find(players,&(&1.bomb)))
+    case player do
+     nil -> nil
+     _ -> case player.bomb do
+        true -> chase(player,players)
+        false -> run_away(player,Enum.find(players,&(&1.bomb)))
+        end
     end
   end
 
