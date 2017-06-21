@@ -177,29 +177,39 @@ channel.on("update", payload => {
         var angle=payload.value[i].angle
         var you = payload.value[i].name===id
         var after_bomb=payload.value[i].after_bomb
-        triangle(x,y,angle,you,has_bomb,after_bomb)
+        var bot=payload.value[i].bot
+        triangle(x,y,angle,you,has_bomb,after_bomb,bot)
     }
     if(payload.bomb!=null){
     ctx.beginPath();
-    ctx.arc(payload.bomb[0],payload.bomb[1],200,0,2*Math.PI);
+    ctx.arc(payload.bomb[0],payload.bomb[1],50,0,2*Math.PI);
     ctx.stroke();
     }
 })
+var width = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
 
+var height = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
 var canvas = document.getElementById("myCanvas")
+
+console.log(width)
 var ctx = canvas.getContext('2d')
 
 function render() {
     ctx.fillStyle = 'rgb(255,255,255)';
-    ctx.fillRect(0, 0, 1000, 700);
+    ctx.fillRect(0, 0, width, height);
 
     ctx.lineWidth = 1;
 
 }
 
-function triangle(x,y,angle,player,bomb,after_bomb){
-    if (!player) ctx.fillStyle= 'rgb(100,100,100)'
-    else ctx.fillStyle= 'rgb(0,100,200)'
+function triangle(x,y,angle,player,bomb,after_bomb,bot){
+    if (!player && !bot) ctx.fillStyle= 'rgb(0,200,0)'
+    else if(!bot) ctx.fillStyle= 'rgb(0,100,200)'
+    else ctx.fillStyle= 'rgb(100,100,100)'
     if (bomb) ctx.fillStyle= 'rgb(255,0,0)'
     if (after_bomb) ctx.fillStyle= 'rgb(0,0,0)'
     var angle2=angle//Math.PI/2

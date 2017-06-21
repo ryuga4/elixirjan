@@ -55,6 +55,7 @@ defmodule HelloPhoenix.Players do
         &1.after_bomb -> &1 |> HelloPhoenix.Player.out_of_range()
         true -> &1
         end)), bomb: nil, time: ""} end)
+        spawn_bomb()
   end
 
 
@@ -135,6 +136,21 @@ defmodule HelloPhoenix.Players do
   def stop(%{"name" => name}) do
     action(name,&Player.set_move(&1,:stop))
   end
+
+  ############### STRICT
+  def turn_left!(%{"name" => name}) do
+      action(name,&Player.turn_left(&1))
+  end
+  def turn_right!(%{"name" => name}) do
+      action(name,&Player.turn_right(&1))
+  end
+  def forward!(%{"name" => name}) do
+      action(name,&Player.forward(&1))
+  end
+  def stop!(%{"name" => name}) do
+      action(name,&Player.stop(&1))
+  end
+  ###############
 
   def update() do
     Agent.update(__MODULE__, fn i -> %{i |  players: i.players

@@ -23,7 +23,8 @@ defmodule HelloPhoenix.Player do
              key: "default",
              bomb: false,
              after_bomb: false,
-             points: 0
+             points: 0,
+             bot: false
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
     x = case a+a2 do
        sth when sth > @width -> @width

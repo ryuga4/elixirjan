@@ -22,6 +22,7 @@ defmodule HelloPhoenix.Clock do
     #IO.binwrite("| ")
     time=measure(fn -> HelloPhoenix.Players.update() end)
     %{players: players, bomb: bomb,time: time2} = HelloPhoenix.Players.get_info()
+    spawn fn -> HelloPhoenix.AutoPilot.moveall(players) end
     HelloPhoenix.Endpoint.broadcast("room:lobby", "update", %{value: players, bomb: bomb,time: time2})
     #IO.puts(time)
     schedule_work(case @span-round(time*1000) do
