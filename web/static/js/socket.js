@@ -174,7 +174,7 @@ channel.on("turned",payload => {
     helper.n+=d.getMilliseconds()-timer
     helper.inc++
     timer=0
-    if (helper.inc>=100) {
+    if (helper.inc>=10) {
     console.log(helper.n/helper.inc)
     helper.n=0
     helper.inc=0
