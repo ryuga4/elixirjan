@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdbd6db6-2a19-4a0d-8c35-7807fcfe2c90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="$PROJECT_DIR$/_build/dev/lib/hellophoenix/ebin/" />
     <ignored path="$PROJECT_DIR$/_build/test/lib/hellophoenix/ebin/" />
@@ -45,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="players.ex" pinned="false" current-in-tab="true">
+      <file leaf-file-name="players.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/players.ex">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -113,18 +112,18 @@
       <file leaf-file-name="clock.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/clock.ex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+            <state relative-caret-position="80">
+              <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="9" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router.ex" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/router.ex">
+      <file leaf-file-name="auto_pilot.ex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/auto_pilot.ex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="27" column="33" lean-forward="false" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+            <state relative-caret-position="140">
+              <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -146,25 +145,35 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="page_controller.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/controllers/page_controller.ex">
 =======
       <file leaf-file-name="user_socket.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/channels/user_socket.ex">
+=======
+      <file leaf-file-name="hello_phoenix.ex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/hello_phoenix.ex">
+>>>>>>> 3b32342680662e0ae71204408fc47c9b4541b46b
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+            <state relative-caret-position="320">
+              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="hello_phoenix.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/hello_phoenix.ex">
 >>>>>>> 2e247993ead0e2bafd7e7f13dc4368b45f77c95e
+=======
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+>>>>>>> 3b32342680662e0ae71204408fc47c9b4541b46b
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+            <state relative-caret-position="100">
+              <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -230,7 +239,6 @@
         <option value="$PROJECT_DIR$/web/templates/page/js/can.js" />
         <option value="$PROJECT_DIR$/web/templates/page/index.html.eex" />
         <option value="$PROJECT_DIR$/lib/hello_phoenix/Ticker.ex" />
-        <option value="$PROJECT_DIR$/lib/hello_phoenix.ex" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/mix.exs" />
         <option value="$PROJECT_DIR$/web/channels/user_socket.ex" />
@@ -242,6 +250,9 @@
         <option value="$PROJECT_DIR$/web/controllers/kreiser_controller.ex" />
         <option value="$PROJECT_DIR$/web/controllers/page_controller.ex" />
         <option value="$PROJECT_DIR$/lib/hello_phoenix/players.ex" />
+        <option value="$PROJECT_DIR$/lib/hello_phoenix/auto_pilot.ex" />
+        <option value="$PROJECT_DIR$/lib/hello_phoenix.ex" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -706,8 +717,11 @@
     <frame x="0" y="27" width="1920" height="1053" extended-state="0" />
 =======
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+<<<<<<< HEAD
     <editor active="true" />
 >>>>>>> 2e247993ead0e2bafd7e7f13dc4368b45f77c95e
+=======
+>>>>>>> 3b32342680662e0ae71204408fc47c9b4541b46b
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -765,6 +779,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/web/views/page_view.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -772,6 +787,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 3b32342680662e0ae71204408fc47c9b4541b46b
     <entry file="file://$PROJECT_DIR$/web/static/css/phoenix.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -920,14 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/controllers/hello_controller.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1028,14 +1037,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/priv/static/js/app.js" />
-    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/clock.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/support/channel_case.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1077,18 +1078,48 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/clock.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="9" selection-end-column="5" />
+>>>>>>> 3b32342680662e0ae71204408fc47c9b4541b46b
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+=======
+    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix/auto_pilot.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/hello_phoenix.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+>>>>>>> 3b32342680662e0ae71204408fc47c9b4541b46b
           <folding />
         </state>
       </provider>
