@@ -4,7 +4,7 @@ defmodule HelloPhoenix.KreiserController do
   def index(conn, _params) do
     conn
         |> put_layout(false)
-        |> render "whoacalendar.html"
+        |> render("whoacalendar.html")
   end
 
 end

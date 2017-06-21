@@ -149,7 +149,7 @@ function update() {
 };
 
 //setInterval(()=>{channel.push("update", {body: 0})},10)
-setInterval(()=>{update()},1)
+//setInterval(()=>{update()},1)
 
 var helper = {
     inc: 0,
@@ -164,9 +164,8 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("update", payload => {
-    helper.n+=1
-    helper.inc+=payload.time.val
-    console.log(payload.value[0].inc+" "+helper.inc/helper.n)
+
+    console.log("time: "+payload.time)
 
     //licznik+=1
     render()
@@ -179,6 +178,11 @@ channel.on("update", payload => {
         var you = payload.value[i].name===id
         var after_bomb=payload.value[i].after_bomb
         triangle(x,y,angle,you,has_bomb,after_bomb)
+    }
+    if(payload.bomb!=null){
+    ctx.beginPath();
+    ctx.arc(payload.bomb[0],payload.bomb[1],200,0,2*Math.PI);
+    ctx.stroke();
     }
 })
 

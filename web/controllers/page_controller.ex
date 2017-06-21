@@ -4,6 +4,6 @@ defmodule HelloPhoenix.PageController do
   def index(conn, _params) do
     conn
     #|> put_layout(false)
-    |> render :index
+    |> render(:index)
   end
 end
