@@ -102,6 +102,7 @@ function checkKey(e) {
 
 }
 */
+var timer=0
 
 var Key = {
     _pressed: {},
@@ -117,7 +118,12 @@ var Key = {
     check: function() {
         if(this._pressed[Key.UP]&&!this._pressed[Key.DOWN]) channel.push("forward", {"name": id})
         if(this._pressed[Key.DOWN]&&!this._pressed[Key.UP]) channel.push("stop", {"name": id})
-        if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) channel.push("turn_left", {"name": id})
+        if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) {
+            var d = new Date();
+            timer=d.getMilliseconds()
+            //console.log(timer)
+            channel.push("turn_left", {"name": id})
+        }
         if(this._pressed[Key.RIGHT]&&!this._pressed[Key.LEFT]) channel.push("turn_right", {"name": id})
         if(this._pressed[Key.UP]&&this._pressed[Key.DOWN]) channel.push("move_up", {"name": id})
         if(this._pressed[Key.LEFT]&&this._pressed[Key.RIGHT]) channel.push("turning_up", {"name": id})
@@ -153,20 +159,25 @@ function update() {
 
 var helper = {
     inc: 0,
-    n: 0
+    n: 0,
+    n2: 0
 }
 
 
-
+channel.on("turned",payload => {
+    var d = new Date();
+    helper.n+=d.getMilliseconds()-timer
+    helper.inc+=1
+    console.log(helper.n/helper.inc)
+ })
 //setInterval(function(){ }, 1000);
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("update", payload => {
-    helper.n+=payload.timeSERWER
-    helper.inc+=1
-    console.log("time: "+helper.n/helper.inc)
+
+
 
     if (helper.n>=100) {
         helper.n=0
