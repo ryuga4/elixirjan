@@ -119,8 +119,8 @@ var Key = {
         if(this._pressed[Key.UP]&&!this._pressed[Key.DOWN]) channel.push("forward", {"name": id})
         if(this._pressed[Key.DOWN]&&!this._pressed[Key.UP]) channel.push("stop", {"name": id})
         if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) {
-            var d = new Date();
-            timer=d.getMilliseconds()
+           // var d = new Date();
+           // timer=d.getMilliseconds()
             channel.push("turn_left", {"name": id})
         }
         if(this._pressed[Key.RIGHT]&&!this._pressed[Key.LEFT]) channel.push("turn_right", {"name": id})
@@ -169,12 +169,12 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-channel.on("turned",payload => {
+/*channel.on("turned",payload => {
 var d = new Date();
     d.getMilliseconds()-timer
     timer=0
     console.log(d.getMilliseconds()-timer)
- })
+ })*/
 channel.on("update", payload => {
     console.log("UPDATE")
 

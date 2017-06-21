@@ -124,10 +124,10 @@ defmodule HelloPhoenix.AutoPilot do
 
     case distance([x,y],[x1,y1])-distance([x,y],[x2,y2]) do
       some when some < -0.001 ->
-            IO.puts "siema"
+            #IO.puts "siema"
             %{"name" => player.name} |> HelloPhoenix.Players.turn_left!()
       some when some > 0.001 ->
-            IO.puts "siema2"
+            #IO.puts "siema2"
             %{"name" => player.name} |> HelloPhoenix.Players.turn_right!()
       _ -> "dupa"
     end
