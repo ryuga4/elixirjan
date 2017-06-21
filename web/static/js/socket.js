@@ -169,7 +169,7 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-channel.on("turned",payload => {
+/*channel.on("turned",payload => {
     var d = new Date();
     helper.n+=d.getMilliseconds()-timer
     helper.inc++
@@ -180,7 +180,7 @@ channel.on("turned",payload => {
     helper.inc=0
     }
 
- })
+ })*/
 channel.on("update", payload => {
     console.log("UPDATE")
 
