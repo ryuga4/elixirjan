@@ -1,6 +1,6 @@
 defmodule HelloPhoenix.Player do
   @maxspeed 6
-  @maxspeed_bomb 10
+  @maxspeed_bomb 8
   @minspeed 0.01
   @resistance 0.96
   @acceleration 0.4
