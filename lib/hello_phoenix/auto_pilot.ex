@@ -22,6 +22,8 @@ defmodule HelloPhoenix.AutoPilot do
 
 
 
+
+
   def moveall(players) do
     Agent.get(__MODULE__,&(&1.names)) |> Enum.each(fn i -> move(i,players) end)
   end
