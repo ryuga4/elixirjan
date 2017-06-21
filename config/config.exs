@@ -11,7 +11,7 @@ config :hello_phoenix,
 
 # Configures the endpoint
 config :hello_phoenix, HelloPhoenix.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "elixirjan.herokuapp.com"],
   secret_key_base: "7GJY5zotxPxvhBojWi0BkvV1QgKLNI1ty1GtBMcKbvckMqlPWV+lAGRddz8B07xW",
   render_errors: [view: HelloPhoenix.ErrorView, accepts: ~w(html json)],
   pubsub: [name: HelloPhoenix.PubSub,
