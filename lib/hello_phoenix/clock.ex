@@ -25,6 +25,7 @@ defmodule HelloPhoenix.Clock do
                        HelloPhoenix.AutoPilot.moveall(players)
                        end)
 
+
     HelloPhoenix.Endpoint.broadcast("room:lobby", "update", %{value: players, bomb: bomb,time: time2,timeSERWER: time})
     #IO.puts(time)
     schedule_work(case @span-round(time*1000) do
