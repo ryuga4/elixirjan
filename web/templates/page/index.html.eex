@@ -1,4 +1,4 @@
-<canvas id="myCanvas" width="1000" height="700" style="border:1px solid #000000; top: 0; left: 0;position: absolute">
+<canvas id="myCanvas" width="1000" height="700" style="border:1px solid #000000; top: 0; left: 0">
     Your browser does not support the HTML5 canvas tag.
 </canvas>
-
+<div id="elm-main"></div>
