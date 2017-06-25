@@ -73,6 +73,6 @@ end
     [500,500]
   end
   defp distance2([a,b],[a2,b2]) do
-    :math.sqrt((a-a2)*(a-a2)+(b-b2)*(b-b2))
+    (a-a2)*(a-a2)+(b-b2)*(b-b2)
   end
 end
