@@ -47,6 +47,20 @@ end
   defp points2([wall1,wall2|_]=walls), do: [crossing_point(wall1,wall2)| (points2(tl(walls)))]
 
 
+  def block([x,y]=coord,%HelloPhoenix.Wall{}=wall) do
+    [x2,y2]=closest_point(coord,wall)
+    [vx,vy]=[x2-x,y2-y]
+    dist=:math.sqrt(vx*vx+vy*vy)
+    scale=10/dist
+    output1=[x2+scale*vx,y2+scale*vy]
+    output2=[x2-scale*vx,y2-scale*vy]
+    case distance2(output1,middle())<distance2(output2,middle()) do
+      true -> output1
+      false -> output2
+    end
+  end
+
+
   def walls() do
     wall1=%HelloPhoenix.Wall{a: 1,b: 0,c: 0}
     wall2=%HelloPhoenix.Wall{a: 0,b: 1,c: 0}
@@ -55,4 +69,10 @@ end
     [wall1,wall2,wall3,wall4]
   end
 
+  def middle() do
+    [500,500]
+  end
+  defp distance2([a,b],[a2,b2]) do
+    :math.sqrt((a-a2)*(a-a2)+(b-b2)*(b-b2))
+  end
 end

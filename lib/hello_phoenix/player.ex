@@ -30,20 +30,21 @@ defmodule HelloPhoenix.Player do
              points: 0,
              bot: false
   def move(%HelloPhoenix.Player{position: [a,b], velocity: [a2,b2]}=player) do
-    x = case a+a2 do
-       sth when sth > @width -> @width
-       sth when sth < 0    -> 0
-       sth                 -> sth
-    end
-    y = case b+b2 do
-       sth when sth > @height -> @height
-       sth when sth < 0    -> 0
-       sth                 -> sth
-    end
-    %{player | position: [x,y]}
+    x = a+a2
+    y = b+b2
+    %{player | position: borders2([x,y])}
   end
   
-  
+  def borders2([x0,y0]) do
+      walls=HelloPhoenix.Wall.walls()
+      walls
+      |> List.foldl([x0,y0],fn wall,[x,y] ->
+       case HelloPhoenix.Wall.distance([x,y],wall)>10 do
+          true ->[x,y]
+          false ->HelloPhoenix.Wall.block([x,y],wall)
+          end
+       end)
+  end
   
   def set_turning(%HelloPhoenix.Player{}=player, turning) do
     %{player | turning: turning}
