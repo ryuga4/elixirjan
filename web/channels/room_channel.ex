@@ -11,7 +11,11 @@ defmodule HelloPhoenix.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
 
-
+  def handle_in("ping", msg, socket) do
+    #IO.puts "ping"
+    push socket, "ping", %{}
+    {:noreply,socket}
+  end
 
 
   def handle_in("alert", %{"msg" => msg}, socket) do

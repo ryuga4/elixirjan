@@ -168,8 +168,6 @@ defmodule HelloPhoenix.AutoPilot do
     [x,y]=points ++ [[x2,y2]]
               |> Enum.map(&(supercalc([x1,y1],&1)))
               |> Enum.reduce(fn [xi,yi],[xa,ya] -> [xa+xi,ya+yi] end)
-
-
     [x1+x,y1+y]
 
   end

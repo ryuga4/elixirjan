@@ -118,11 +118,7 @@ var Key = {
     check: function() {
         if(this._pressed[Key.UP]&&!this._pressed[Key.DOWN]) channel.push("forward", {"name": id})
         if(this._pressed[Key.DOWN]&&!this._pressed[Key.UP]) channel.push("stop", {"name": id})
-        if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) {
-            var d = new Date();
-            timer=d.getMilliseconds()
-            channel.push("turn_left", {"name": id})
-        }
+        if(this._pressed[Key.LEFT]&&!this._pressed[Key.RIGHT]) channel.push("turn_left", {"name": id})
         if(this._pressed[Key.RIGHT]&&!this._pressed[Key.LEFT]) channel.push("turn_right", {"name": id})
         if(this._pressed[Key.UP]&&this._pressed[Key.DOWN]) channel.push("move_up", {"name": id})
         if(this._pressed[Key.LEFT]&&this._pressed[Key.RIGHT]) channel.push("turning_up", {"name": id})
@@ -164,10 +160,17 @@ var helper = {
 
 
 
-//setInterval(function(){ }, 1000);
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+setInterval(function(){ ping() }, 10);
+function ping() {
+    var d = new Date();
+    timer=d.getMilliseconds()
+    channel.push("ping", {})
+}
+
 
 /*channel.on("turned",payload => {
     var d = new Date();
@@ -182,7 +185,7 @@ channel.join()
 
  })*/
 channel.on("update", payload => {
-    console.log("UPDATE")
+    //console.log("UPDATE")
 
 
     if (helper.n>=100) {
@@ -206,6 +209,19 @@ channel.on("update", payload => {
     ctx.arc(payload.bomb[0],payload.bomb[1],50,0,2*Math.PI);
     ctx.stroke();
     }
+})
+
+channel.on("ping", payload => {
+var d = new Date();
+//console.log("ping")
+helper.inc++
+helper.n+=timer-d.getMilliseconds()
+timer=0
+if (helper.inc>100) {
+console.log(helper.n/helper.inc)
+helper.n=0
+helper.inc=0
+}
 })
 var width = window.innerWidth
 || document.documentElement.clientWidth
