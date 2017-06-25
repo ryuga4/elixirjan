@@ -35,7 +35,7 @@ defmodule HelloPhoenix.Players do
   end
 
   def tick(time) do
-
+    HelloPhoenix.Endpoint.broadcast("room:lobby","bomb_tick",%{val: time})
     time2=measure(fn ->
     #IO.puts time
     #IO.inspect(HelloPhoenix.Players.get_info().players)

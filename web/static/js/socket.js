@@ -218,11 +218,16 @@ helper.inc++
 helper.n+=timer-d.getMilliseconds()
 timer=0
 if (helper.inc>100) {
-console.log(helper.n/helper.inc)
+//console.log(helper.n/helper.inc)
 helper.n=0
 helper.inc=0
 }
 })
+channel.on("bomb_tick",payload => {
+console.log(payload.val)
+})
+
+
 var width = window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;

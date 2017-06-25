@@ -101,12 +101,11 @@ defmodule HelloPhoenix.AutoPilot do
 
   end
   def supercalc([x1,y1]=v1,[x2,y2]=v2) do
-  case distance(v1,v2) do
-    dist when dist > 5 ->  x=(x1-x2)*100/:math.pow(dist,2)
-                              y=(y1-y2)*100/:math.pow(dist,2)
-                              [x,y]
-    dist -> [0,0]
-
+    case distance(v1,v2) do
+        dist when dist > 5 ->  x=(x1-x2)*100/:math.pow(dist,2)
+                               y=(y1-y2)*100/:math.pow(dist,2)
+                               [x,y]
+        dist -> [0,0]
   end
 
 
