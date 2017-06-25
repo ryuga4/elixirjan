@@ -35,7 +35,7 @@ defmodule HelloPhoenix.AutoPilot do
      nil -> nil
      _ -> case player.bomb do
         true -> chase(player,players)
-        false -> run_away(player,Enum.find(players,&(&1.bomb)))
+        false -> run_away2(player,Enum.find(players,&(&1.bomb)))
         end
     end
   end
@@ -100,6 +100,14 @@ defmodule HelloPhoenix.AutoPilot do
 
   end
 
+  def run_away2(_,nil) do nil end
+  def run_away2(player,bomber) do
+    #IO.inspect(wypadkowa(player,bomber))
+
+    player |> turn_to(wypadkowa(player,bomber))
+    HelloPhoenix.Players.forward!(%{"name" => player.name})
+  end
+
   def borders(x0,y0) do
     x = cond do
         x0 < 0 -> 0
@@ -133,9 +141,36 @@ defmodule HelloPhoenix.AutoPilot do
       some when some > 0.001 ->
             #IO.puts "siema2"
             %{"name" => player.name} |> HelloPhoenix.Players.turn_right!()
-      _ -> "dupa"
+      _ -> nil
     end
 
+
+  end
+  def supercalc([x1,y1]=v1,[x2,y2]=v2) do
+  case distance(v1,v2) do
+    dist when dist > 100 ->  x=(x1-x2)*100/:math.pow(dist,2)
+                              y=(y1-y2)*100/:math.pow(dist,2)
+                              [x,y]
+    dist -> [0,0]
+
+  end
+
+
+  end
+
+  def wypadkowa(%HelloPhoenix.Player{position: [x1,y1]},%HelloPhoenix.Player{position: [x0,y0],velocity: [vx,vy]}) do
+    {x2,y2}={x0+20*vx,y0+20*vy}
+    walls=HelloPhoenix.Wall.walls()
+    #IO.inspect([x1,y1])
+    [w1,w2,w3,w4]=walls
+    points = walls |> Enum.map(&(HelloPhoenix.Wall.closest_point([x1,y1],&1)))
+    #IO.inspect([x1,y1])
+    [x,y]=points ++ [[x2,y2]]
+              |> Enum.map(&(supercalc([x1,y1],&1)))
+              |> Enum.reduce(fn [xi,yi],[xa,ya] -> [xa+xi,ya+yi] end)
+
+
+    [x1+x,y1+y]
 
   end
 
