@@ -1,5 +1,5 @@
 defmodule HelloPhoenix.Clock do
-  @span 10
+  @span 0
 
 
   use GenServer
