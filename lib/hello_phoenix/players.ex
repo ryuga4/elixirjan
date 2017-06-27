@@ -7,12 +7,13 @@ defmodule HelloPhoenix.Players do
 
   def start_link() do
     Agent.start_link(fn -> %{players: [], bomb: nil,time: ""} end,name: __MODULE__)
+    Task.start fn -> spawn_bomb() end
   end
 
   def new_player(player) do
     case players() do
         [] ->
-            spawn_bomb()
+
             Agent.update(__MODULE__,&(%{&1 | players: [player|&1.players]}))
         _ -> Agent.update(__MODULE__,&(%{&1 | players: [player|&1.players]}))
     end
@@ -31,7 +32,7 @@ defmodule HelloPhoenix.Players do
 
   def spawn_bomb() do
     Agent.update(__MODULE__,&(%{&1 | bomb: [:rand.uniform(@width),:rand.uniform(@height)], time: @bomb_duration}))
-    Task.start fn -> tick(@bomb_duration) end
+    tick(@bomb_duration)
   end
 
   def tick(time) do

@@ -35,7 +35,7 @@ defmodule HelloPhoenix.Wall do
   def closest_point([x,y],%HelloPhoenix.Wall{a: a1,b: b1}=wall1) do
    #IO.puts("a1: #{a1}, b1: #{b1}, x: #{x}, y: #{y}")
    crossing_point(wall1,%HelloPhoenix.Wall{a: b1,b: -a1,c: -(b1*x-a1*y)})
-end
+  end
   def points(walls) do
     cond do
       Enum.count(walls)<3 -> raise "You need at least 3 walls, #{inspect(walls)} is not enought"
