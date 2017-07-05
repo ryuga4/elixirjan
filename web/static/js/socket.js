@@ -66,6 +66,7 @@ var licznik =0
 
 
 
+
 /*
 
 var keys = {};
@@ -228,13 +229,9 @@ console.log(payload.val)
 })
 
 
-var width = window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth;
+var width = 1000
 
-var height = window.innerHeight
-|| document.documentElement.clientHeight
-|| document.body.clientHeight;
+var height = 700
 var canvas = document.getElementById("myCanvas")
 
 console.log(width)
